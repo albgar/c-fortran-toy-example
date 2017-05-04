@@ -20,10 +20,16 @@ cmat: cmat.o matrix.o
 fmat: fmat.o matrix.o
 	$(FC) -o fmat fmat.o matrix.o
 #
+csolve: csolve.o matrix.o elsi.o wrappers.o
+	$(FC) -o csolve csolve.o matrix.o elsi.o wrappers.o
+#
+fsolve: fsolve.o matrix.o elsi.o 
+	$(FC) -o fsolve fsolve.o matrix.o elsi.o 
+#
 .f90.o:
 	$(FC) $(FCFLAGS) -c $<
 
 clean:
-	rm -f *.o chh fhh cmat fmat
+	rm -f *.o chh fhh cmat fmat csolve
 
 
