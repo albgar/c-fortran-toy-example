@@ -1,9 +1,8 @@
 Toy example for C-Fortran interoperability with opaque types
 
-In this example there are no wrappers, at the expense of having to call the
-c_loc function in the fortran program (t.f90).
-
-Note the subtlety regarding the initial allocation of the derived type.
+Updated version with actual wrappers.
+The Fortran version is cleaner, and the C one transparently
+supports the allocatable array without having to deal with it.
 
 To compile, use:
 
@@ -12,11 +11,6 @@ make fhh
 
 for the C and Fortran sides, respectively.
 
-The results should be:
+Forthcoming: Example with "matrix" module.
 
-./chh
-     1
-
-./fhh
-     1
 
