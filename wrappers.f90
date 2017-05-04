@@ -39,3 +39,19 @@ subroutine w_init_elsi(elsi_h,solver)  bind(C,name="c_init_elsi")
   elsi_h = c_loc(elsi_h_p)
   
 end subroutine w_init_elsi
+
+
+subroutine w_end_elsi(elsi_h)  bind(C,name="c_end_elsi")
+
+  use, intrinsic :: iso_c_binding
+  use elsi
+
+  implicit none
+
+  type(c_ptr), value :: elsi_h
+
+  type(elsi_t), pointer :: elsi_h_p
+
+  call end_elsi(elsi_h_p)
+
+end subroutine w_end_elsi

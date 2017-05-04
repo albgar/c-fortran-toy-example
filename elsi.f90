@@ -8,7 +8,7 @@ module elsi
      integer, allocatable :: a(:)
   end type elsi_t
 
-  public :: init_elsi, print_elsi_handle
+  public :: init_elsi, print_elsi_handle, end_elsi
   
 CONTAINS
   
@@ -35,5 +35,15 @@ subroutine init_elsi(elsi_h,solver)
   elsi_h%a = [1,2,3,4,5]
   
 end subroutine init_elsi
+
+subroutine end_elsi(elsi_h)
+  implicit none
+
+  type(elsi_t), intent(inout) :: elsi_h
+
+  if (allocated(elsi_h%a)) deallocate(elsi_h%a)
+  
+end subroutine end_elsi
+
 end module elsi
 
