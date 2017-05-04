@@ -4,13 +4,13 @@
 FC=gfortran
 CC=gcc
 
-chh: test.o m_init.o elsi.o
-	$(FC) -o chh test.o m_init.o elsi.o
-fhh: t.o m_init.o elsi.o
-	$(FC) -o fhh t.o m_init.o elsi.o
+chh: test.o wrappers.o elsi.o
+	$(FC) -o chh test.o elsi.o wrappers.o
+fhh: t.o elsi.o
+	$(FC) -o fhh t.o elsi.o
 #
-m_init.o: elsi.o
-t.o:  m_init.o elsi.o
+wrappers.o: elsi.o
+t.o:  elsi.o
 #
 .f90.o:
 	$(FC) -c $<
