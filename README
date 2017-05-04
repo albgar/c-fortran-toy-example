@@ -1,0 +1,20 @@
+Toy example for C-Fortran interoperability with opaque types
+
+In this example there are no wrappers, at the expense of having to call the
+c_loc function in the fortran program (t.f90).
+
+To compile and run:
+
+Fortran example:
+  gfortran -c elsi.f90 m_init.f90
+  gfortran -o fhh t.f90  elsi.o m_init.o
+  ./fhh
+         1
+
+C side:
+
+  cc -c test.c
+  gfortran -o chh test.o  elsi.o m_init.o  # re-use previous fortran objects
+  ./chh
+         1
+		      
