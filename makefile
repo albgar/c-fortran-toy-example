@@ -2,6 +2,8 @@
 .SUFFIXES: .c .f90 .o .a
 
 FC=gfortran
+FCFLAGS = -g -O0 -fcheck=bounds
+CFLAGS = -g -O0
 CC=gcc
 
 chh: test.o wrappers.o elsi.o
@@ -12,7 +14,16 @@ fhh: t.o elsi.o
 wrappers.o: elsi.o
 t.o:  elsi.o
 #
+cmat: cmat.o matrix.o
+	$(FC) -o cmat cmat.o matrix.o
+#
+fmat: fmat.o matrix.o
+	$(FC) -o fmat fmat.o matrix.o
+#
 .f90.o:
-	$(FC) -c $<
+	$(FC) $(FCFLAGS) -c $<
+
+clean:
+	rm -f *.o chh fhh cmat fmat
 
 
