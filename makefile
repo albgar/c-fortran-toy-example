@@ -30,6 +30,6 @@ fsolve: fsolve.o matrix.o elsi.o
 	$(FC) $(FCFLAGS) -c $<
 
 clean:
-	rm -f *.o chh fhh cmat fmat csolve
+	rm -f *.o *.mod chh fhh cmat fmat csolve fsolve
 
 

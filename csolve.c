@@ -4,25 +4,28 @@
 /* Combination of elsi and matrix calls. 
    Could use typedefs and subroutines in the future */
 
-void c_init_elsi(void **p, int a);
-void c_elsi_solve(void  *p, void *q, double *sum);
-void c_print_elsi_handle(void  *p);
-void c_end_elsi(void *p);
+typedef void * ELSI_handle;
+typedef void * Matrix_handle;
+
+void c_init_elsi(ELSI_handle *elsi_h, int a);
+void c_print_elsi_handle(ELSI_handle elsi_h);
+void c_end_elsi(ELSI_handle elsi_h);
+void c_elsi_solve(ELSI_handle elsi_h, Matrix_handle mat_h, double *sum);
 
 /* Note the 'passing by reference' of the pointer in this call */
-void c_matrix_register(void **p, double *a, int n, int type);
-void c_matrix_print(void  *p);
+void c_matrix_register(Matrix_handle *mat_h, double *a, int n, int type);
+void c_matrix_print(Matrix_handle mat_h);
 
 #define ELPA 1
 
 int main()
 {
   int solver = ELPA;
-  void *elsi_handle;
+  ELSI_handle elsi_handle;
 
   int n=4;
   int type=1;
-  void *matrix_handle;
+  Matrix_handle matrix_handle;
   double *a;
   double sum;
   int i;

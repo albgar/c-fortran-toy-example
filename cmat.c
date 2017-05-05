@@ -4,14 +4,15 @@
 /* Example of calls to matrix Fortran module */
 
 /* Note the 'passing by reference' of the pointer in this call */
-void c_matrix_register(void **p, double *a, int n, int type);
-void c_matrix_print(void  *p);
+typedef void * Matrix_handle;
+void c_matrix_register(Matrix_handle *mat_h, double *a, int n, int type);
+void c_matrix_print(Matrix_handle mat_h);
 
 int main()
 {
   int n=4;
   int type=1;
-  void *matrix_handle;
+  Matrix_handle matrix_handle;
   double *a;
   int i;
 

@@ -1,12 +1,14 @@
 #include <stdio.h>
-void c_init_elsi(void **p, int a);
-void c_print_elsi_handle(void  *p);
-void c_end_elsi(void *p);
+
+typedef void * ELSI_handle;
+void c_init_elsi(ELSI_handle *elsi_h, int a);
+void c_print_elsi_handle(ELSI_handle elsi_h);
+void c_end_elsi(ELSI_handle elsi_h);
 
 int main()
 {
   int solver;
-  void *elsi_handle;
+  ELSI_handle elsi_handle;
 
   solver = 1;
   /* We need to get back the actual value of the address,

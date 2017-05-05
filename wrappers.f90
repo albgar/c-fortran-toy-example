@@ -3,6 +3,8 @@ module elsi_wrappers
   use elsi
 
   implicit none
+
+  private
   
 CONTAINS
   
