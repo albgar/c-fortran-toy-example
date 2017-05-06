@@ -6,7 +6,8 @@ the functionality.
 On the C side, the contents of those derived types are NOT
 replicated. Instead, they are mapped to opaque handles (defined
 formally as 'structs' in order to enable strong type checking by the C
-compiler -- see "my_macros.h").
+compiler -- see "my_macros.h" and try to compile 'typecheck_test' to
+see it in action).
 
 C-Fortran wrapper routines use the 'iso_c_binding' technology, in
 particular the `type(c_ptr)' universal pointer concept.
