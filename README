@@ -1,16 +1,33 @@
 Toy example for C-Fortran interoperability with opaque types
 
-Updated version with actual wrappers.
-The Fortran version is cleaner, and the C one transparently
-supports the allocatable array without having to deal with it.
+The Fortran side uses derived types to keep state and encapsulate
+the functionality.
 
-To compile, use:
+On the C side, the contents of those derived types are NOT
+replicated. Instead, they are mapped to opaque handles (defined
+formally as 'structs' in order to enable strong type checking by the C
+compiler -- see "my_macros.h").
 
-make chh
-make fhh
+C-Fortran wrapper routines use the 'iso_c_binding' technology, in
+particular the `type(c_ptr)' universal pointer concept.
 
-for the C and Fortran sides, respectively.
+The only limitation to this approach is that the Fortran routines must
+use as other arguments interoperable types (i.e., no allocatable arrays).
 
-Forthcoming: Example with "matrix" module.
+Note however that among the other arguments can be other derived
+types, as long as they are also mapped to opaque handles in the C
+side. As an example, the 'matrix' module implements a toy matrix
+derived type. An argument of this type is used in the 'elsi_solve'
+routine.
+
+To compile the examples, use the makefile provided.
+
+The 'wrapper' routines are put in modules for convenience. Note that
+nothing needs to be exported from these modules: the C binding names
+are taken from the "bind" attributes in the routines themselves.
+
+Alberto Garcia
+albertog@icmab.es
+May 2017
 
 

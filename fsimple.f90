@@ -1,5 +1,5 @@
 
-program t
+program fsimple
   use elsi
 
   type(elsi_t) :: elsi_h
@@ -8,5 +8,5 @@ program t
 
   call print_elsi_handle(elsi_h)
   
-end program t
+end program fsimple
 
