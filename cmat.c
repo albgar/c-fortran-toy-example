@@ -3,10 +3,7 @@
 
 /* Example of calls to matrix Fortran module */
 
-/* Note the 'passing by reference' of the pointer in this call */
-typedef void * Matrix_handle;
-void c_matrix_register(Matrix_handle *mat_h, double *a, int n, int type);
-void c_matrix_print(Matrix_handle mat_h);
+#include "matrix.h"
 
 int main()
 {

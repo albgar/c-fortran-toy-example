@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Combination of elsi and matrix calls. */
-
 #include "elsi.h"
 #include "matrix.h"
 
@@ -33,7 +31,7 @@ int main()
 
   c_matrix_register(&matrix_handle,a,n,type);
 
-  c_elsi_solve(elsi_handle,matrix_handle,&sum);
+  c_elsi_solve(matrix_handle,elsi_handle,&sum);
   printf("Sum of elements: %10.4f\n",sum);  
   c_print_elsi_handle(elsi_handle);
   c_end_elsi(elsi_handle);

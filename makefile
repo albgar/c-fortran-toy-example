@@ -5,14 +5,20 @@ FC=gfortran
 FCFLAGS = -g -O0 -fcheck=bounds
 CFLAGS = -g -O0
 CC=gcc
-
+#
+all: chh fhh cmat fmat csolve fsolve 
+#
 chh: test.o wrappers.o elsi.o
 	$(FC) -o chh test.o elsi.o wrappers.o
 fhh: t.o elsi.o
 	$(FC) -o fhh t.o elsi.o
 #
+elsi.o: matrix.o
 wrappers.o: elsi.o
 t.o:  elsi.o
+test.o: elsi.h
+csolve.o: elsi.h matrix.h
+cmat.o: matrix.h
 #
 cmat: cmat.o matrix.o
 	$(FC) -o cmat cmat.o matrix.o
@@ -23,6 +29,9 @@ fmat: fmat.o matrix.o
 csolve: csolve.o matrix.o elsi.o wrappers.o
 	$(FC) -o csolve csolve.o matrix.o elsi.o wrappers.o
 #
+typecheck_test: typecheck_test.o matrix.o elsi.o wrappers.o
+	$(FC) -o typecheck_test typecheck_test.o matrix.o elsi.o wrappers.o
+#
 fsolve: fsolve.o matrix.o elsi.o 
 	$(FC) -o fsolve fsolve.o matrix.o elsi.o 
 #
@@ -30,6 +39,6 @@ fsolve: fsolve.o matrix.o elsi.o
 	$(FC) $(FCFLAGS) -c $<
 
 clean:
-	rm -f *.o *.mod chh fhh cmat fmat csolve fsolve
+	rm -f *.o *.mod chh fhh cmat fmat typecheck_test csolve fsolve
 
 

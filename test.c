@@ -1,9 +1,6 @@
 #include <stdio.h>
 
-typedef void * ELSI_handle;
-void c_init_elsi(ELSI_handle *elsi_h, int a);
-void c_print_elsi_handle(ELSI_handle elsi_h);
-void c_end_elsi(ELSI_handle elsi_h);
+#include "elsi.h"
 
 int main()
 {
